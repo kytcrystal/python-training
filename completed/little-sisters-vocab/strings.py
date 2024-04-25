@@ -44,7 +44,7 @@ def remove_suffix_ness(word):
     """
 
     removed_suffix = word[:-4]
-    if removed_suffix[-1] == 'i':
+    if removed_suffix[-1] == "i":
         return removed_suffix[:-1] + "y"
     return removed_suffix
 
