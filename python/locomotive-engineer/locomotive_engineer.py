@@ -1,13 +1,14 @@
 """Functions which helps the locomotive engineer to keep track of the train."""
 
 
-def get_list_of_wagons():
+def get_list_of_wagons(*args):
     """Return a list of wagons.
 
     :param: arbitrary number of wagons.
     :return: list - list of wagons.
     """
-    pass
+    *wagons, = args
+    return wagons
 
 
 def fix_list_of_wagons(each_wagons_id, missing_wagons):
@@ -17,7 +18,9 @@ def fix_list_of_wagons(each_wagons_id, missing_wagons):
     :param missing_wagons: list - the list of missing wagons.
     :return: list - list of wagons.
     """
-    pass
+    last_a, last_b, loco, *rest = each_wagons_id
+    *wagons, = loco, *missing_wagons, *rest, last_a, last_b
+    return wagons
 
 
 def add_missing_stops():
