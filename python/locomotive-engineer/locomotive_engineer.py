@@ -23,14 +23,15 @@ def fix_list_of_wagons(each_wagons_id, missing_wagons):
     return wagons
 
 
-def add_missing_stops():
+def add_missing_stops(routing_dict, **kwargs):
     """Add missing stops to route dict.
 
     :param route: dict - the dict of routing information.
     :param: arbitrary number of stops.
     :return: dict - updated route dictionary.
     """
-    pass
+    routing_dict["stops"] = list(kwargs.values())
+    return routing_dict
 
 
 def extend_route_information(route, more_route_information):
@@ -40,7 +41,8 @@ def extend_route_information(route, more_route_information):
     :param more_route_information: dict -  extra route information.
     :return: dict - extended route information.
     """
-    pass
+    extend_route_information = {**route, **more_route_information}
+    return extend_route_information
 
 
 def fix_wagon_depot(wagons_rows):
