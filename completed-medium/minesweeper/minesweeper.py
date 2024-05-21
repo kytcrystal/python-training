@@ -2,14 +2,10 @@ MINE = "*"
 NO_MINE = " "
 
 def annotate(minefield):
-    if len(minefield) == 0:
-        return minefield
-    
-    if len(minefield) == 1:
-        return [check_squares([],minefield[0],[])]
     
     minecount = []
     prev = []
+    
     for row in range(0,len(minefield)):
         current = minefield[row]
         
@@ -37,28 +33,24 @@ def check_squares(prev_row,current_row,next_row):
         
         total_mines = 0
         if len(prev_row) != 0:
-            total_mines += check_front(prev_row, position)
-            
-            if prev_row[position] == MINE:
-                total_mines += 1
-            total_mines += check_back(prev_row, position)
+            total_mines += check_front(prev_row, position) + check_current(prev_row, position) + check_back(prev_row, position)
 
-                
-        total_mines += check_front(current_row, position)
-        total_mines += check_back(current_row, position)
+        total_mines += check_front(current_row, position) + check_back(current_row, position)
             
         if len(next_row) != 0:
-            total_mines += check_front(next_row, position)
+            total_mines += check_front(next_row, position) + check_current(next_row, position) + check_back(next_row, position)
 
-            if next_row[position] == MINE:
-                total_mines += 1
-            total_mines += check_back(next_row, position)
-
-        
         if total_mines == 0:
             total_mines = " "
         output_row += str(total_mines)
+        
     return output_row
+
+def check_current(row, position):
+    mine = 0
+    if row[position] == MINE:
+        mine = 1
+    return mine
 
 def check_front(row, position):
     mine = 0
