@@ -70,7 +70,7 @@ def tag_special_ingredients(dish):
     SPECIAL_INGREDIENTS constant imported from `sets_categories_data.py`.
     """
 
-    pass
+    return (dish[0], set(dish[1]).intersection(SPECIAL_INGREDIENTS))
 
 
 def compile_ingredients(dishes):
