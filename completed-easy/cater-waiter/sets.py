@@ -58,6 +58,7 @@ def categorize_dish(dish_name, dish_ingredients):
     for index, category in enumerate(categories):
         if set(dish_ingredients).issubset(category):
             return dish_name + ": " + category_names[index]
+    return dish_name
 
 def tag_special_ingredients(dish):
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
@@ -98,7 +99,8 @@ def separate_appetizers(dishes, appetizers):
     Either list could contain duplicates and may require de-duping.
     """
 
-    pass
+    return list(set(dishes).difference(set(appetizers)))
+
 
 
 def singleton_ingredients(dishes, intersection):
@@ -115,5 +117,9 @@ def singleton_ingredients(dishes, intersection):
 
     The function should return a `set` of ingredients that only appear in a single dish.
     """
-
-    pass
+    print(intersection)
+    single = set()
+    for dish in dishes:
+        single = single.union(dish.difference(set(intersection)))
+        
+    return single
