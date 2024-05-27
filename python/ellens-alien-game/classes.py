@@ -24,16 +24,16 @@ class Alien:
     def __init__(self, x_coordinate, y_coordinate):
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
-        self.health = Alien.health
         
-    def hit(): 
-        pass
+    def hit(self): 
+        self.health -= 1
+                    
+    def is_alive(self) -> bool:
+        return self.health
     
-    def is_alive():
-        pass
-    
-    def teleport(new_x_coordinate, new_y_coordinate):
-        pass
+    def teleport(self, new_x_coordinate, new_y_coordinate):
+        self.x_coordinate = new_x_coordinate
+        self.y_coordinate = new_y_coordinate 
     
     def collision_detection(other):
         pass
