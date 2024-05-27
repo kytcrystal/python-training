@@ -10,13 +10,13 @@ except ImportError as import_fail:
                       "your classes.py file, but could not find it." 
                       "Did you misname or forget to create it?") from None
 
-try:
-    from classes import new_aliens_collection
-except ImportError as err:
-    raise ImportError("\n\nMISSING FUNCTION --> We tried to import the "
-                      "new_aliens_collection() function "
-                      "from your classes.py file, but could not find it. "
-                      "Did you misname or forget to create it?") from None
+# try:
+#     from classes import new_aliens_collection
+# except ImportError as err:
+#     raise ImportError("\n\nMISSING FUNCTION --> We tried to import the "
+#                       "new_aliens_collection() function "
+#                       "from your classes.py file, but could not find it. "
+#                       "Did you misname or forget to create it?") from None
 
 
 class ClassesTest(unittest.TestCase):
