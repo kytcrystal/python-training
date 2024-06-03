@@ -5,29 +5,20 @@ def translate(text):
     final_text = ""
     
     for word in words:
-        if word[0] in vowels:
-            final_text += word + "ay "
-            continue
+        if not (word[0] in vowels or word[0:2] == "xr" or word[0:2] == "yt"):
         
-        if word[0:2] == "xr" or word[0:2] == "yt":
-            final_text += word + "ay "
-            continue
-        
-        first = True
-        for letter in word:
-            if letter not in vowels:
-                q_value = False
-                if not first and letter == "y":
+            first = True
+            for letter in word:
+                if letter not in vowels:
+                    if not first and letter == "y":
+                        break
+                    if letter == "q" and word[1] == "u":
+                        word = word[2:len(word)] + word[0:2]
+                        break
+                    word = word[1:len(word)] + word[0]          
+                else:
                     break
-                word = word[1:len(word)] + word[0]
-                if letter == "q": 
-                    q_value = True
-            else:
-                break
-            first = False
-            
-        if q_value and word[0] == "u":
-            word = word[1:len(word)] + word[0]
+                first = False
         
         final_text += word + "ay "
     
