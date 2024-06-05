@@ -22,5 +22,20 @@ def sublist(list_one, list_two):
     if list_one == list_two:
         return EQUAL
     
+    sublist = True
+    for item in list_one:
+        if item not in list_two:
+            sublist = False
+            break
+       
+    superlist = True
+    for item in list_two:
+        if item not in list_one:
+            superlist = False
+            break   
+        
+    if not sublist and not superlist:
+        return UNEQUAL
+        
     
     return True
