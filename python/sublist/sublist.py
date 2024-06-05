@@ -19,6 +19,8 @@ UNEQUAL = 4
 
 
 def sublist(list_one, list_two):
+    if list_one == list_two:
+        return EQUAL
     
     
     return True
