@@ -43,4 +43,13 @@ def sublist(list_one, list_two):
     if not sublist and not superlist:
         return UNEQUAL
            
+    string_one = " ".join(list(map(str, list_one)))
+    string_two = " ".join(list(map(str, list_two)))
+
+    if string_one in string_two:
+        return SUBLIST
+
+    if string_two in string_one:
+        return SUPERLIST
+    
     return UNEQUAL
