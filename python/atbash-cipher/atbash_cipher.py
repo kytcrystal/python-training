@@ -20,4 +20,12 @@ def encode(plain_text):
 
 
 def decode(ciphered_text):
-    pass
+    plain_text = ""
+    for char in ciphered_text:
+        if char in alphabet_list:
+            index = alphabet_list.index(char)
+            plain_text += alphabet_list[-1-index]
+        if char.isnumeric():
+            plain_text += char
+    return plain_text
+
