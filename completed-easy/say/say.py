@@ -28,25 +28,11 @@ def say(number):
         if chunk > 0:
 
             if chunk >= 100:
-                hundred = chunk // 100
-                say_words += num_to_words[hundred] + " hundred "
+                hundreds = chunk // 100
+                say_words += num_to_words[hundreds] + " hundred "
                 chunk = chunk % 100
             
-            tens_flag = False
-            if chunk > 10:
-                if chunk in num_to_words:
-                    say_words += num_to_words[chunk]
-                    chunk = 0
-                else:
-                    tens = (chunk // 10) * 10
-                    say_words += num_to_words[tens]
-                    chunk = chunk % 10
-                    tens_flag = True
-            
-            if chunk > 0:
-                if tens_flag:
-                    say_words += "-"
-                say_words += num_to_words[chunk]
+            say_words += transform_tens_and_ones(chunk)
                 
             if power > 0:
                 say_words += " " + num_to_words[10**power] + " "
@@ -54,4 +40,24 @@ def say(number):
         power -= 3
         
     return say_words.strip()
+
+def transform_tens_and_ones(chunk):
+    if chunk > 0 and chunk in num_to_words:
+        return num_to_words[chunk]
+    
+    tens_and_ones = ""
+    tens_flag = False
+    
+    if chunk > 10:
+        tens = (chunk // 10) * 10
+        tens_and_ones += num_to_words[tens]
+        chunk = chunk % 10
+        tens_flag = True
+            
+    if chunk > 0:
+        if tens_flag:
+            tens_and_ones += "-"
+        tens_and_ones += num_to_words[chunk]
+        
+    return tens_and_ones
     
