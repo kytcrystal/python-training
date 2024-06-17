@@ -25,30 +25,32 @@ def say(number):
     power = (len(number_chunks)-1) * 3
     
     for chunk in number_chunks:
-
-        if chunk >= 100:
-            hundred = chunk // 100
-            say_words += num_to_words[hundred] + " hundred "
-            chunk = chunk % 100
-        
-        tens_flag = False
-        if chunk > 10:
-            if chunk in num_to_words:
-                say_words += num_to_words[chunk]
-                chunk = 0
-            else:
-                tens = (chunk // 10) * 10
-                say_words += num_to_words[tens]
-                chunk = chunk % 10
-                tens_flag = True
-        
         if chunk > 0:
-            if tens_flag:
-                say_words += "-"
-            say_words += num_to_words[chunk]
+
+            if chunk >= 100:
+                hundred = chunk // 100
+                say_words += num_to_words[hundred] + " hundred "
+                chunk = chunk % 100
             
-        if power > 0:
-            say_words += " " + num_to_words[10**power] + " "
+            tens_flag = False
+            if chunk > 10:
+                if chunk in num_to_words:
+                    say_words += num_to_words[chunk]
+                    chunk = 0
+                else:
+                    tens = (chunk // 10) * 10
+                    say_words += num_to_words[tens]
+                    chunk = chunk % 10
+                    tens_flag = True
+            
+            if chunk > 0:
+                if tens_flag:
+                    say_words += "-"
+                say_words += num_to_words[chunk]
+                
+            if power > 0:
+                say_words += " " + num_to_words[10**power] + " "
+
         power -= 3
         
     return say_words.strip()
