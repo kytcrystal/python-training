@@ -12,4 +12,11 @@ def slices(series, length):
     if len(series) < length:
         raise ValueError("slice length cannot be greater than series length")
     
-    return None
+    slices = []
+    index = 0
+    
+    while index < len(series):
+        slices.append(series[index])
+        index += 1
+    
+    return slices
