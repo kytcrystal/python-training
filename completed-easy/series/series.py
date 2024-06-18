@@ -15,8 +15,8 @@ def slices(series, length):
     slices = []
     index = 0
     
-    while index < len(series):
-        slices.append(series[index])
+    while index + length <= len(series):
+        slices.append(series[index : index+length])
         index += 1
     
     return slices
