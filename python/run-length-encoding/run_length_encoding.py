@@ -1,7 +1,12 @@
 def decode(string):
     text = ""
-    for index in range(0, len(string), 2):
-        text += string[index+1] * int(string[index])
+    times = 1
+    for char in string:
+        if char.isnumeric():
+            times = int(char)
+            continue
+        text += char * times
+        times = 1
     return text
 
 
