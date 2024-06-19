@@ -18,4 +18,24 @@ def decode(string):
 
 
 def encode(string):
-    return string
+    code = ""
+    prev_char = ""
+    count = 0
+    for index in range(0,len(string)):
+        char = string[index]
+        if prev_char == char:
+            count += 1
+            continue
+        if count == 1:
+            code += prev_char
+        elif count != 0:
+            code += str(count) + prev_char
+        prev_char = char
+        count = 1
+
+    if count == 1:
+        code += prev_char
+    elif count != 0:
+        code += str(count) + prev_char
+    
+    return code
