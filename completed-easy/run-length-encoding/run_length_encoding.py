@@ -26,16 +26,17 @@ def encode(string):
         if prev_char == char:
             count += 1
             continue
-        if count == 1:
-            code += prev_char
-        elif count != 0:
-            code += str(count) + prev_char
+        code += create_code(prev_char, count)
         prev_char = char
         count = 1
 
-    if count == 1:
-        code += prev_char
-    elif count != 0:
-        code += str(count) + prev_char
+    code += create_code(prev_char, count)
     
     return code
+
+def create_code(prev_char, count):
+    if count == 1:
+        return prev_char
+    elif count != 0:
+        return str(count) + prev_char
+    return ""
