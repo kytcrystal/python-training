@@ -30,12 +30,11 @@ def recite(start_verse, end_verse):
                     received_gifts += "and " + gifts[1]
                 else:
                     received_gifts += gifts[gift_number] + ", "
-            print(received_gifts)
             
         if verse_number == 1:
             received_gifts = gifts[1]
     
-        verse = f"On the {ordinal_numbers[start_verse]} day of Christmas my true love gave to me: {received_gifts}."
+        verse = f"On the {ordinal_numbers[verse_number]} day of Christmas my true love gave to me: {received_gifts}."
         verses.append(verse)
     
     return verses
