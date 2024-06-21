@@ -20,21 +20,17 @@ gifts = {12: "twelve Drummers Drumming",
 def recite(start_verse, end_verse):
     
     verses = []
-    
-    for verse_number in range(start_verse, end_verse+1):
-        
-        if verse_number > 1:
-            received_gifts = ""
-            for gift_number in range(verse_number,0,-1):
-                if gift_number == 1:
-                    received_gifts += "and " + gifts[1]
-                else:
-                    received_gifts += gifts[gift_number] + ", "
+    received_gifts = ""
             
-        if verse_number == 1:
-            received_gifts = gifts[1]
-    
-        verse = f"On the {ordinal_numbers[verse_number]} day of Christmas my true love gave to me: {received_gifts}."
-        verses.append(verse)
-    
+    for gift_number in range(1, end_verse+1):
+        received_gifts = gifts[gift_number] + received_gifts
+        
+        if gift_number >= start_verse:
+            verse = f"On the {ordinal_numbers[gift_number]} day of Christmas my true love gave to me: {received_gifts}."
+            verses.append(verse)
+        
+        if gift_number == 1:
+            received_gifts = "and " + received_gifts
+        received_gifts = ", " + received_gifts   
+            
     return verses
