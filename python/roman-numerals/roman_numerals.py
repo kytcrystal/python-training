@@ -1,52 +1,43 @@
 roman_to_arabic = {
     1000: "M",
+    900: "CM",
     500: "D",
+    400: "CD",
     100: "C",
+    90: "XC",
     50: "L",
+    40: "XL",
     10: "X",
+    9: "IX",
     5: "V",
+    4: "IV",
     1: "I" 
    }
 
-special_case = {4: "IV", 9: "IX", 40: "XL", 90: "XC", 400: "CD", 900: "CM"}
 
 def roman(number):
     roman_numeral = ""
     
-    if number >= 1000:
-        quotient = number // 1000
-        roman_numeral += roman_to_arabic[1000] * quotient
-        number = number % 1000
-    
-    if number >= 900:
-        roman_numeral += special_case[900]
-        number -= 900
+    for index, key in enumerate(roman_to_arabic):
+        if number >= key:
         
-    if number >= 500:
-        quotient = number // 500
-        roman_numeral += roman_to_arabic[500] * quotient
-        number = number % 500
-        
-    if number >= 400:
-        roman_numeral += special_case[400]
-        number -= 400
-        
-    if number >= 100:
-        quotient = number // 100
-        roman_numeral += roman_to_arabic[100] * quotient
-        number = number % 100
-        
-    if number >= 90:
-        roman_numeral += special_case[90]
-        number -= 90
-        
-    if number > 4:
-        roman_numeral += roman_to_arabic[5] 
-        
-    if number > 0 and number < 4:
-        roman_numeral += roman_to_arabic[1] * number
-    
+            if index % 2 == 0:
+                number, roman_numeral = convert_number(number, roman_numeral, key)
+            
+            if index % 2 == 1:
+                number, roman_numeral = convert_special(number, roman_numeral, key)
 
-        
     return roman_numeral
+
+
+def convert_special(number, roman_numeral, special):
+    roman_numeral += roman_to_arabic[special]
+    number -= special
+    return number, roman_numeral
+
+def convert_number(number, roman_numeral, factor):
+    quotient = number // factor
+    roman_numeral += roman_to_arabic[factor] * quotient
+    number = number % factor
+    return number, roman_numeral
 
