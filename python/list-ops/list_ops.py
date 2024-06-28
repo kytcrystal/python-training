@@ -15,7 +15,10 @@ def filter(function, list):
 
 
 def length(list):
-    pass
+    count = 0
+    for item in list:
+        count += 1
+    return count
 
 
 def map(function, list):
