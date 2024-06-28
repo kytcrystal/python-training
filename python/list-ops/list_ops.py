@@ -34,4 +34,4 @@ def foldr(function, list, initial):
 
 
 def reverse(list):
-    pass
+    return list[length(list)-1::-1]
