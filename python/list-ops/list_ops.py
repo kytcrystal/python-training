@@ -11,7 +11,7 @@ def concat(lists):
 
 
 def filter(function, list):
-    pass
+    return [item if function else None for item in list]
 
 
 def length(list):
