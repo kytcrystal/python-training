@@ -3,7 +3,11 @@ def append(list1, list2):
 
 
 def concat(lists):
-    pass
+    flat_list = []
+    for list in lists:
+        for item in list:
+            flat_list.append(item)
+    return flat_list
 
 
 def filter(function, list):
