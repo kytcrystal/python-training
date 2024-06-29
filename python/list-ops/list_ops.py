@@ -11,7 +11,7 @@ def concat(lists):
 
 
 def filter(function, list):
-    return [item if function else None for item in list]
+    return [item for item in list if function(item)]
 
 
 def length(list):
@@ -22,12 +22,11 @@ def length(list):
 
 
 def map(function, list):
-    pass
+    return [function(item) for item in list]
 
 
 def foldl(function, list, initial):
     pass
-
 
 def foldr(function, list, initial):
     pass
