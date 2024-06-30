@@ -33,7 +33,10 @@ def foldl(function, list, initial):
 
 
 def foldr(function, list, initial):
-    pass
+    acc = initial
+    for el in reverse(list):
+        acc = function(acc, el)
+    return acc
 
 
 def reverse(list):
